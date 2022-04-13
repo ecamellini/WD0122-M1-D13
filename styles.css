@@ -20,4 +20,16 @@ body {
   border-radius: 10px;
   text-align: center;
   font-size: larger;
+  margin: 2px;
+}
+
+.day:hover {
+  border-color: rgb(220,100,220);
+  background-color: rgb(60,60,100);
+  cursor: pointer;
+}
+
+.selected-day {
+  border-color: rgb(220,100,220);
+  background-color: rgb(60,60,100);
 }

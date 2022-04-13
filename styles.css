@@ -2,12 +2,27 @@ body {
   background-color: rgb(16,19,53);
   color: white;
   font-family: 'Roboto', sans-serif;
-  max-width: 1268px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 40px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 #days-container {
-  width: 60%;
+  border-style: solid;
+  border-width: 3px;
+  border-color: rgb(140,60,140);
+  padding: 12px;
+  border-radius: 8px;
+  display: inline-block;
+  width: 54%;
 }
 
 .day {
@@ -32,4 +47,60 @@ body {
 .selected-day {
   border-color: rgb(220,100,220);
   background-color: rgb(60,60,100);
+}
+
+/* APPOINTMENTS */
+#appointments-area {
+  vertical-align: top;
+  display: inline-block;
+  min-height: 200px;
+  margin: 0 20px;
+  text-align: center;
+}
+
+#appointments-area h2 {
+  color: white;
+  border-bottom: solid 3px rgb(40,30,150);
+  padding-bottom: 16px;
+  padding-top: 24px;
+  text-transform: uppercase;
+}
+
+#appointment-creation {
+  padding: 4px;
+}
+
+#appointment-creation input {
+  height: 32px;
+  background-color: rgb(16,19,53);
+  border: solid 3px rgb(140,60,140);
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: larger;
+}
+
+#appointment-time {
+  width: 80px;
+}
+
+#appointment-time::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+}
+
+#appointment-title {
+  width: 200px;
+}
+
+#appointment-creation input[type="button"] {
+  margin-left: 10px;
+  width: 92px;
+  height: 54px;
+  background-color: rgb(140,60,140);
+  font-weight: bolder;
+}
+
+#appointments-list li {
+  text-align: left;
+  font-size: larger;
 }

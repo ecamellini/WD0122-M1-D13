@@ -54,6 +54,6 @@ in terms of HTML, CSS, JS.
 ### Main JS functionalities
 
 - Click on a day --> the day gets selected and the appointments for the day are visualized
-- Click on save meeting
-    --> collect the values of the inputs (time and name) and save a meeting for the day
-    --> "refresh" the list of meetings for the day to show it immediately
+- Click on save appointment
+    --> collect the values of the inputs (time and name) and save an appointment for the day
+    --> "refresh" the list of appointments for the day to show it immediately

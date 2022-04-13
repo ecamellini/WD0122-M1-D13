@@ -20,7 +20,27 @@
   <div id="days-container">
     <!-- DAYS DISPlAYED PROGRAMMATICALLY IN JS -->
   </div>
-  <script type="text/javascript" src="index.js"></script>
+
+  <div id="appointments-area">
+    <h2>Appointments for the day</h2>
+    <div id="appointment-creation">
+      <input type="time" id="appointment-time" value="09:00" />
+      <input type="text" id="appointment-title" placeholder="Enter title..." />
+      <input type="button" value="Create" />
+    </div>
+    <div id="appointments-list">
+      <!--
+           AN APPOINTMENT WILL BE SOMETHING LIKE...
+
+           <ul>
+               <li>12:00 - Lunch</li>
+               <li>13:00 - Meeting with Tom</li>
+               <li>20:00 - Soccer</li>
+           </ul>
+           -->
+    </div>
+    <script type="text/javascript" src="index.js"></script>
+  </div>
 </body>
 
 </html>

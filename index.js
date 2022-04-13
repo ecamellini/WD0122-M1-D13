@@ -9,7 +9,8 @@ What is a day, knowing that it can have a list of appointments:
 it will be represented as a list of Appointment objects
 
 A month is just a list of days: an array of days.
-*/
+
+MOCKED DATA (EXAMPLE):
 
 let day1 = [
   { time: "9:00", title: "EPICODE Class"},
@@ -29,6 +30,10 @@ let monthlyCalendar = [
   [],
   // ........... we need to have 30 lists of appointments inside this list
 ]
+
+*/
+
+let monthlyCalendar = []
 
 /* ASSUMPTION
 For this first release, let's just always display 30 days.
@@ -61,6 +66,9 @@ function displayDays() {
     // See this line above: let daysContainer = document.getElementById('days-container')
     // 3.2) We manipulate it -> we attach a child to it
     daysContainer.appendChild(dayNode)
+
+    // We also initialize the empty list of appointments for the day inside the calendar
+    monthlyCalendar.push([])
   }
 }
 

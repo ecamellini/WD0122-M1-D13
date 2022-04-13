@@ -115,16 +115,23 @@ function saveAppointment() {
     title: titleInputValue
   }
 
-  // 3) We get the selected day number
-  let dayNumber = document.querySelector(".selected-day").innerText
+  // 3) We get the selected day
+  let selectedDay = document.querySelector(".selected-day")
 
-  // 3) We get the list of appointment objects for the selected day,
-  //      and we append the new appointment to it
-  let appointmentsForTheDay = monthlyCalendar[dayNumber - 1]
-  appointmentsForTheDay.push(appointment)
+  if (selectedDay === null) {
+    alert("You must select a day to add a meeting.")
+  } else {
+    // 4) We get the selected day number
+    let dayNumber = selectedDay.innerText
 
-  // We refresh the list so that we display also the newly added meeting
-  displayMeetingsForTheDay()
+    // 5) We get the list of appointment objects for the selected day,
+    //      and we append the new appointment to it
+    let appointmentsForTheDay = monthlyCalendar[dayNumber - 1]
+    appointmentsForTheDay.push(appointment)
+
+    // 6) We refresh the list so that we display also the newly added meeting
+    displayMeetingsForTheDay()
+  }
 }
 
 function executeOnLoad() {

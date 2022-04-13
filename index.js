@@ -82,11 +82,10 @@ function selectDay(eventData) {
   clickedDay.classList.add('selected-day')
 }
 
-function displayMeetingsForTheDay(eventData) {
+function displayMeetingsForTheDay() {
   // We can find out what the selected day is by getting the one with the 'selected-day' class
-  // Or... we already have it in eventData.target, since this is an onclick listener on day tags
-  let clickedDayNode = eventData.target
-  let dayNumber = parseInt(clickedDayNode.innerText) // String --> number, but probably it works anyways
+  let selectedDayNode = document.querySelector('.selected-day')
+  let dayNumber = parseInt(selectedDayNode.innerText) // String --> number, but probably it works anyways
   let appointmentsForTheDay = monthlyCalendar[dayNumber - 1] // Days start from 1, arrays starts from 0
 
   let ulNode = document.getElementById('appointments-list-ul')
@@ -103,6 +102,29 @@ function displayMeetingsForTheDay(eventData) {
     // 3) We attach it somewhere to the DOM: in this case, the ul of appointments
     ulNode.appendChild(liNode)
   }
+}
+
+function saveAppointment() {
+  // 1) We get the inputs value
+  let timeInputValue = document.getElementById("appointment-time").value
+  let titleInputValue = document.getElementById("appointment-title").value
+
+  // 2) We create an appointment object for the new appointment
+  let appointment = {
+    time: timeInputValue,
+    title: titleInputValue
+  }
+
+  // 3) We get the selected day number
+  let dayNumber = document.querySelector(".selected-day").innerText
+
+  // 3) We get the list of appointment objects for the selected day,
+  //      and we append the new appointment to it
+  let appointmentsForTheDay = monthlyCalendar[dayNumber - 1]
+  appointmentsForTheDay.push(appointment)
+
+  // We refresh the list so that we display also the newly added meeting
+  displayMeetingsForTheDay()
 }
 
 function executeOnLoad() {

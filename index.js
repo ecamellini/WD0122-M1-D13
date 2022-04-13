@@ -22,6 +22,7 @@ function displayDays() {
 
     // 3) We need to add them to the days container i.e., we manipulate the days container
     // 3.1) We need to select the days container - already done before the loop
+    // See this line above: let daysContainer = document.getElementById('days-container')
     // 3.2) We manipulate it -> we attach a child to it
     daysContainer.appendChild(dayNode)
   }

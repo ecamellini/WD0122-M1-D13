@@ -2,4 +2,22 @@ body {
   background-color: rgb(16,19,53);
   color: white;
   font-family: 'Roboto', sans-serif;
+  max-width: 1268px;
+  margin: 0 auto;
+}
+
+#days-container {
+  width: 60%;
+}
+
+.day {
+  background-color:  rgb(16,19,53);
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border: 2px solid rgb(140,60,140);
+  border-radius: 10px;
+  text-align: center;
+  font-size: larger;
 }

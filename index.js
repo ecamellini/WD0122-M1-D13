@@ -1,3 +1,34 @@
+/* DATA MODEL AND DATA STRUCTURE
+
+What is an appointment:
+- A day: number -- e.g., 24 (in the future, it will be a Date...)
+- A time: string -- e.g., "9:00"
+- A title: string  -- e.g., "Meeting with Tom"
+
+What is a day, knowing that it can have a list of appointments:
+it will be represented as a list of Appointment objects
+
+A month is just a list of days: an array of days.
+*/
+
+let day1 = [
+  { time: "9:00", title: "EPICODE Class"},
+  { time: "12:00", title: "Lunch"}
+]
+
+let day2 = [
+  { time: "10:00", title: "Coffee with jack"},
+  { time: "12:00", title: "Lunch"},
+  { time: "20:00", title: "Soccer"}
+]
+
+let monthlyCalendar = [
+  day1,
+  day2,
+  [],
+  [],
+  // ........... we need to have 30 lists of appointments inside this list
+]
 
 /* ASSUMPTION
 For this first release, let's just always display 30 days.
@@ -5,6 +36,7 @@ We don't care about the current month and its real number of days.
 Manipulating dates is very comples, expecially in JS, so we don't do it today.
 */
 const numberOfDays = 30 // Const values are not variable i.e., they don't change, constant
+
 
 function displayDays() {
   // We want to display N tags like this one, inside the days container.
@@ -19,9 +51,10 @@ function displayDays() {
     // 2) We customize it (adding a class, text, etc.)
     dayNode.innerText = dayNumber
     dayNode.classList.add('day')
-    dayNode.onclick = selectDay
+    dayNode.addEventListener('click', selectDay)
+    dayNode.addEventListener('click', displayMeetingsForTheDay)
     // ^^ We do not need to call the function, it will be called automatically with the event data passed down
-    // dayNode.addEventListener('click', selectDay) // Another way to do the same thing
+    // dayNode.onclick = selectDay // Another way to do the same thing, but only one listener can be set this way
 
     // 3) We need to add them to the days container i.e., we manipulate the days container
     // 3.1) We need to select the days container - already done before the loop
@@ -47,6 +80,29 @@ function selectDay(eventData) {
 
   // 2) Manipulate it: add the class
   clickedDay.classList.add('selected-day')
+}
+
+function displayMeetingsForTheDay(eventData) {
+  // We can find out what the selected day is by getting the one with the 'selected-day' class
+  // Or... we already have it in eventData.target, since this is an onclick listener on day tags
+  let clickedDayNode = eventData.target
+  let dayNumber = parseInt(clickedDayNode.innerText) // String --> number, but probably it works anyways
+  let appointmentsForTheDay = monthlyCalendar[dayNumber - 1] // Days start from 1, arrays starts from 0
+
+  let ulNode = document.getElementById('appointments-list-ul')
+  ulNode.replaceChildren([]) // We are emptying the children...
+
+  for (let appointment of appointmentsForTheDay) {
+    // 1) Create the li
+    let liNode = document.createElement('li')
+
+    // 2) We customize it: we write something inside it in this case (appointment time - title)
+    liNode.innerText = `${appointment.time} -- ${appointment.title}`
+    // Another way to do it: appointment.time + " -- " + appointment.title
+
+    // 3) We attach it somewhere to the DOM: in this case, the ul of appointments
+    ulNode.appendChild(liNode)
+  }
 }
 
 function executeOnLoad() {
